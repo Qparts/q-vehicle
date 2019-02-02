@@ -3,6 +3,7 @@ package q.rest.vehicle.operation;
 import q.rest.vehicle.dao.DAO;
 import q.rest.vehicle.filter.SecuredUser;
 import q.rest.vehicle.model.entity.Make;
+import q.rest.vehicle.model.entity.MakeBrand;
 import q.rest.vehicle.model.entity.Model;
 import q.rest.vehicle.model.entity.ModelYear;
 
@@ -10,6 +11,7 @@ import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,9 +19,6 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class VehicleInternalApi2 {
-
-
-    public final static String GET_ALL_ACTIVE_MAKES = "all-active-makes";
 
 
     @EJB
@@ -33,9 +32,11 @@ public class VehicleInternalApi2 {
         try {
             List<Make> makes = dao.getOrderBy(Make.class, "name");
             for (Make make : makes) {
+                addBrandIds(make);
                 String sql = "select b from Model b where b.make = :value0 order by b.name";
                 List<Model> models = dao.getJPQLParams(Model.class, sql, make);
                 make.setModels(models);
+
                 for (Model model : models) {
                     String sql2 = "select b from ModelYear b where b.model = :value0 order by b.year";
                     List<ModelYear> modelYears = dao.getJPQLParams(ModelYear.class, sql2, model);
@@ -151,6 +152,7 @@ public class VehicleInternalApi2 {
             String sql = "select b from Make b where b.status =:value0 order by b.name";
             List<Make> makes = dao.getJPQLParams(Make.class, sql , 'A');
             for (Make make : makes) {
+                addBrandIds(make);
                 String sql2 = "select b from Model b where b.make =:value0 and b.status = :value1 order by b.name";
                 List<Model> models = dao.getJPQLParams(Model.class, sql2, make, 'A');
                 make.setModels(models);
@@ -163,6 +165,15 @@ public class VehicleInternalApi2 {
             return Response.status(200).entity(makes).build();
         } catch (Exception ex) {
             return Response.status(500).build();
+        }
+    }
+
+    private void addBrandIds(Make make){
+        String sql = "select b from MakeBrand b where b.makeId= :value0";
+        List<MakeBrand> makeBrands = dao.getJPQLParams(MakeBrand.class, sql, make.getId());
+        make.setBrandIds(new ArrayList<>());
+        for(MakeBrand makeBrand : makeBrands){
+            make.getBrandIds().add(makeBrand.getBrandId());
         }
     }
 

@@ -39,12 +39,29 @@ public class Make implements Serializable{
 	private Date created;
 	@Column(name="created_by")
 	private int createdBy;
+	@Column(name = "default_category")
+	private Integer defaultCategory;
 	@Transient
 	private List<Model> models;
-	
-	
+	@Transient
+	private List<Integer> brandIds;
 
-	
+	public List<Integer> getBrandIds() {
+		return brandIds;
+	}
+
+	public void setBrandIds(List<Integer> brandIds) {
+		this.brandIds = brandIds;
+	}
+
+	public Integer getDefaultCategory() {
+		return defaultCategory;
+	}
+
+	public void setDefaultCategory(Integer defaultCategory) {
+		this.defaultCategory = defaultCategory;
+	}
+
 	public List<Model> getModels() {
 		return models;
 	}
