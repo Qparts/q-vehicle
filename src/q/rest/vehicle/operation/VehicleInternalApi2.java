@@ -2,6 +2,7 @@ package q.rest.vehicle.operation;
 
 import q.rest.vehicle.dao.DAO;
 import q.rest.vehicle.filter.SecuredUser;
+import q.rest.vehicle.filter.ValidApp;
 import q.rest.vehicle.model.entity.Make;
 import q.rest.vehicle.model.entity.MakeBrand;
 import q.rest.vehicle.model.entity.Model;
@@ -144,7 +145,7 @@ public class VehicleInternalApi2 {
         }
     }
 
-    @SecuredUser
+    @ValidApp
     @GET
     @Path("all-active-makes")
     public Response getAllActiveVehicles() {
