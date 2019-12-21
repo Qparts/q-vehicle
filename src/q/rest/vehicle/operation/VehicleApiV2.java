@@ -64,6 +64,10 @@ public class VehicleApiV2 {
                     sql = "select b from PublicModelYear b where b.modelId = :value0 and b.status =:value1 order by b.year";
                     List<PublicModelYear> modelYears = dao.getJPQLParams(PublicModelYear.class, sql, model.getId(), 'A');
                     model.setModelYears(modelYears);
+                    for(PublicModelYear pmy : modelYears){
+                        pmy.setImageLarge("http://q-cars.s3.eu-central-1.amazonaws.com/sampleLarge.png");
+                        pmy.setImageSmall("http://q-cars.s3.eu-central-1.amazonaws.com/sampleSmall.png");
+                    }
                 }
             }
             return Response.status(200).entity(makes).build();
