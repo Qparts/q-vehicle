@@ -6,11 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3af741ab-5e8e-492f-ad50-35df46c08216" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/vehicle/model/contract/PublicModelYear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/vehicle/model/contract/PublicModelYear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/vehicle/operation/VehicleApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/vehicle/operation/VehicleApiV2.java" afterDir="false" />
-    </list>
+    <list default="true" id="3af741ab-5e8e-492f-ad50-35df46c08216" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +222,7 @@
       <workItem from="1559112087559" duration="652000" />
       <workItem from="1561727487061" duration="84000" />
       <workItem from="1566632271900" duration="15000" />
-      <workItem from="1576908686310" duration="2292000" />
+      <workItem from="1576908686310" duration="2546000" />
     </task>
     <servers />
   </component>
