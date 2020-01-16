@@ -41,6 +41,8 @@ public class Make implements Serializable{
 	private int createdBy;
 	@Column(name = "default_category")
 	private Integer defaultCategory;
+	@Column(name="catalog_id")
+	private String catalogId;
 	@Transient
 	private List<Model> models;
 	@Transient
@@ -87,9 +89,14 @@ public class Make implements Serializable{
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	
-	
-	
+
+	public String getCatalogId() {
+		return catalogId;
+	}
+
+	public void setCatalogId(String catalogId) {
+		this.catalogId = catalogId;
+	}
 
 	public int getId() {
 		return id;

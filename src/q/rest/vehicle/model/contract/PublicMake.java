@@ -21,6 +21,8 @@ public class PublicMake implements Serializable {
     @Column(name="status")
     @JsonIgnore
     private char status;
+    @Column(name = "catalog_id")
+    private String catalogId;
     @Transient
     private List<PublicModel> models;
 
@@ -62,5 +64,13 @@ public class PublicMake implements Serializable {
 
     public void setModels(List<PublicModel> models) {
         this.models = models;
+    }
+
+    public String getCatalogId() {
+        return catalogId;
+    }
+
+    public void setCatalogId(String catalogId) {
+        this.catalogId = catalogId;
     }
 }
